@@ -31,7 +31,7 @@ test("an empty submit shows the challenge's empty message, keeps focus on the fi
   await expect(email).toBeFocused();
   await expect(email).toHaveAttribute("aria-invalid", "true");
   await expect(email).toHaveAccessibleDescription(`${emptyMessage} Demo only: nothing is sent.`);
-  await expect(email).toHaveCSS("border-top-color", "rgb(255, 84, 102)");
+  await expect(email).toHaveCSS("border-top-color", "rgb(200, 47, 68)");
   await expect(button).toBeEnabled();
   expect(new URL(page.url()).search).toBe("");
   expect(writes).toEqual([]);

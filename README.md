@@ -18,3 +18,5 @@ Original challenge files are preserved under `reference/`; supplied images moved
 - TanStack Form validates with a Zod schema on submit, then on every change after the first submit. Empty and malformed addresses get the challenge's two messages, the field is marked invalid and described by the message, and focus returns to it.
 - The input has no `name`, so with JavaScript off a native submit carries no address into the URL or anywhere else.
 - The mobile design sets the form, subtitle, error and copyright at 10–12px. They rise to the family 16px floor (which also stops iOS zooming into the field), and the mobile controls grow from 40px to 48px tall. Small gray copy uses #767676 instead of #969696 for contrast; the heading also uses #767676. Blue #3568dc and a darker #2d5fcf hover preserve readable white button text.
+
+- Placeholder text uses the same readable grey as the supporting copy. Validation messages use a darker red (#c82f44), including the empty and malformed states.

@@ -1,10 +1,11 @@
 import { expect, test } from "@playwright/test";
 
-test("launch heading and submit button keep normal text contrast", async ({ page }) => {
+test("heading, button, placeholder and validation keep normal text contrast", async ({ page }) => {
   for (const width of [375, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
-    const ratios = await page.locator("h1 .light, .notify-form button").evaluateAll(elements => {
+    await page.getByRole("button", { name: "Notify Me" }).click();
+    const ratios = await page.locator("h1 .light, .notify-form button, #email, .email-error").evaluateAll(elements => {
       const luminance = (color: string) => {
         const channels = color.match(/[\d.]+/g)?.slice(0, 3).map(Number);
         if (!channels || channels.length !== 3) throw new Error(`Unsupported computed color ${color}`);
@@ -16,12 +17,12 @@ test("launch heading and submit button keep normal text contrast", async ({ page
       };
       return elements.map(element => {
         const style = getComputedStyle(element);
-        const foreground = luminance(style.color);
+        const foreground = luminance(element instanceof HTMLInputElement ? getComputedStyle(element, "::placeholder").color : style.color);
         const background = luminance(element instanceof HTMLButtonElement ? style.backgroundColor : getComputedStyle(document.body).backgroundColor);
         return (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05);
       });
     });
-    expect(ratios).toHaveLength(2);
+    expect(ratios).toHaveLength(4);
     for (const ratio of ratios) expect(ratio).toBeGreaterThanOrEqual(4.5);
   }
 });
