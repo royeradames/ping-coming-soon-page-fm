@@ -31,7 +31,7 @@ test("an empty submit shows the challenge's empty message, keeps focus on the fi
   await expect(email).toBeFocused();
   await expect(email).toHaveAttribute("aria-invalid", "true");
   await expect(email).toHaveAccessibleDescription(`${emptyMessage} Demo only: nothing is sent.`);
-  await expect(email).toHaveCSS("border-top-color", "rgb(255, 84, 102)");
+  await expect(email).toHaveCSS("border-top-color", "rgb(200, 47, 68)");
   await expect(button).toBeEnabled();
   expect(new URL(page.url()).search).toBe("");
   expect(writes).toEqual([]);
@@ -68,14 +68,14 @@ test("a valid address is accepted honestly: nothing is sent and the field resets
 test("hover and focus states follow the active-states frame", async ({ page }) => {
   await page.goto("/");
   const button = page.getByRole("button", { name: "Notify Me" });
-  await expect(button).toHaveCSS("background-color", "rgb(76, 123, 243)");
+  await expect(button).toHaveCSS("background-color", "rgb(53, 104, 220)");
   await button.hover();
-  await expect(button).toHaveCSS("background-color", "rgba(76, 123, 243, 0.75)");
+  await expect(button).toHaveCSS("background-color", "rgb(45, 95, 207)");
   const twitter = page.getByRole("link", { name: "Twitter", exact: true });
   await twitter.hover();
   await expect(twitter).toHaveCSS("color", "rgb(255, 255, 255)");
   await page.mouse.move(0, 0);
-  await expect(twitter).toHaveCSS("color", "rgb(76, 123, 243)");
+  await expect(twitter).toHaveCSS("color", "rgb(53, 104, 220)");
   await page.getByRole("textbox", { name: "Email address" }).focus();
   await page.keyboard.press("Tab");
   await expect(button).toBeFocused();
