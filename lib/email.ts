@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod";
 
 export const emptyEmailMessage = "Whoops! It looks like you forgot to add your email";
 export const invalidEmailMessage = "Please provide a valid email address";
