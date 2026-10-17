@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Libre_Franklin } from "next/font/google";
 import "./globals.css";
 
-const libreFranklin = Libre_Franklin({ subsets: ["latin"], weight: ["300", "600", "700"], style: ["normal", "italic"], variable: "--font-libre-franklin", display: "swap" });
+// Fonts aren't preloaded: text paints at once in next/font's size-matched fallback (display: swap), so the
+// font files needn't compete with the first paint.
+const libreFranklin = Libre_Franklin({ preload: false, subsets: ["latin"], weight: ["300", "600", "700"], style: ["normal", "italic"], variable: "--font-libre-franklin", display: "swap" });
 
 const siteName = "Ping";
 const siteUrl = "https://ping-coming-soon-page-fm.royeradames.com/";
