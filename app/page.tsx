@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element -- next/image added client JavaScript here without optimizing anything (SVGs, data URLs or unoptimized files). */
 import { NotifyForm } from "./components/notify-form";
 
 const socials = [
@@ -24,12 +24,12 @@ export default function Home() {
     <>
       <main>
         <header className="brand">
-          <Image src="/images/logo.svg" width={86} height={26} alt="Ping" priority />
+          <img src="/images/logo.svg" width={86} height={26} alt="Ping" fetchPriority="high" decoding="async" />
         </header>
         <h1><span className="light">We are launching </span><strong>soon!</strong></h1>
         <p className="subtitle">Subscribe and get notified</p>
         <NotifyForm />
-        <Image className="dashboard" src="/images/illustration-dashboard.png" width={1280} height={782} alt="Preview of the Ping dashboard: a sidebar and four analytics cards with line charts." sizes="(min-width: 48rem) 640px, calc(100vw - 3.5rem)" />
+        <img className="dashboard" src="/images/illustration-dashboard.png" width={1280} height={782} alt="Preview of the Ping dashboard: a sidebar and four analytics cards with line charts." fetchPriority="high" decoding="async" />
       </main>
       <footer>
         <ul className="socials">
