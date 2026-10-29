@@ -2,6 +2,7 @@
   "name": "ping-coming-soon-page-fm",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "bun@1.4.4",
   "engines": {
     "node": ">=22.13.0"
   },
