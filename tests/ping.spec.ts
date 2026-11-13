@@ -145,7 +145,7 @@ test("with JavaScript disabled, submitting never puts the address in the URL or 
   const writes: string[] = [];
   page.on("request", request => { if (request.method() !== "GET") writes.push(request.url()); });
   try {
-    await page.goto("http://127.0.0.1:4536/");
+    await page.goto("http://127.0.0.1:4578/");
     await page.getByRole("textbox", { name: "Email address" }).fill("name@host.tld");
     await page.getByRole("button", { name: "Notify Me" }).click();
     await page.waitForLoadState();
